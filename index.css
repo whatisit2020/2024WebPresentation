@@ -1,0 +1,45 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+img{
+  vertical-align: bottom;
+}
+body{
+  overflow-x: hidden;
+}
+main{
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 3%;
+  margin-bottom: 5%;
+}
+header{
+  padding-top: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+header h1{
+  padding: 30px;
+}
+header nav{
+  padding: 20px;
+}
+nav p{
+  padding: 10px;
+}
+
+/*slide animation*/
+header{
+  transform: translateX(1500px);
+  transition: all 2.5s ease-in-out;
+}
+h2{
+  transform: translateX(1500px);
+  transition: all 3s ease-in-out;
+}
+.slide{
+  transform: translateX(0);
+}

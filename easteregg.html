@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+  margin: 0;
+  padding: 0;
+  }
+  #vanta{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  h1{
+    position: absolute;
+    top: 45vh;
+    z-index: 1;
+    margin-left: 50px;
+  }
+  h2{
+    position: absolute;
+    top: 50vh;
+    z-index: 1;
+    margin-left: 50px;
+  }
+  .changeOne{
+    animation: colorone 2s step-end infinite;
+  }
+  @keyframes colorone{
+    50%{
+      color:rgb(251, 255, 0);
+    }
+    0%{
+      color: rgb(255, 213, 0);
+    }
+  }
+  .changeTwo{
+    animation: color 2s step-end infinite;
+  }
+  @keyframes color{
+    0%{
+      color:rgb(251, 255, 0)
+    }
+    50%{
+      color: rgb(255, 213, 0);
+    }
+  }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="changeOne">Congratulations!!</h1>
+    <h2 class="changeTwo">You have found the golden birds!!</h1>
+    <div id="vanta"></div>
+  </main>
+  <script src="three.min.js"></script>
+  <script src="vanta.birds.min.js"></script>
+  <script>
+    VANTA.BIRDS({
+      el: "#vanta",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      birdSize: 2.00,
+      wingSpan: 8.00,
+      speedLimit: 4.00,
+      backgroundColor: 0x1d3a59,
+      color1: 0xff6800,
+      color2: 0xffc600,
+    });
+  </script>
+</body>
+</html>

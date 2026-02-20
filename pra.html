@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="gsap.min.js"></script>
+  <style>
+    span{
+      opacity:0;
+    }
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background: linear-gradient(-45deg, #00d0ff, #e73c7e, #23a6d5, #23d5ab);
+      animation: gradient 15s ease infinite;
+      background-size: 400% 400%;
+      overflow: hidden;
+    } 
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam ratione error voluptatem natus dolores quos reiciendis atque beatae! Tenetur autem impedit placeat dignissimos<br> voluptatem vero? Atque minima ipsa doloribus praesentium necessitatibus nisi ad, facilis aspernatur sed labore soluta consectetur pariatur aliquid rem accusamus corporis nostrum molestiae quibusdam aperiam. Placeat voluptatem, natus explicabo quod expedita alias cumque nemo minima non nobis delectus cupiditate porro quas libero rem eaque molestiae tempora quae consequuntur velit adipisci accusamus qui! Earum, enim distinctio. Deserunt nemo neque modi, nihil dolor totam quod consequuntur similique? Illum tenetur, exercitationem tempore iure veritatis quaerat distinctio, totam aspernatur amet id nobis culpa a numquam, quos consequatur corrupti dolore voluptas blanditiis. Impedit officia iste reiciendis enim debitis aliquam totam beatae obcaecati placeat officiis alias excepturi similique, numquam rem distinctio. Nemo ex exercitationem sint officia laudantium, magnam dicta minima amet sunt a at, illum doloribus. In explicabo cupiditate earum quisquam quas dolorum tempore reprehenderit, sed rerum magnam eveniet id voluptatum facere quidem quaerat totam ipsum, nihil doloribus possimus. Laudantium voluptates tenetur praesentium minu quam!</p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis mollitia distinctio minus illo quos repellat quod sed inventore nulla perferendis cupiditate ipsum neque aspernatur officia voluptatum similique numquam odit laborum unde, molestias maxime voluptatibus animi sunt. Omnis officia adipisci, odit consectetur iusto placeat impedit doloribus saepe, nesciunt dignissimos, maiores minima dolore eveniet! Ullam laboriosam nesciunt dolorum accusantium dicta perspiciatis maxime culpa eum est delectus, aut mollitia repellendus. Quam animi, illum nostrum tempora ducimus, nemo a consectetur reiciendis quis magnam culpa! Quo quibusdam voluptas ipsum placeat amet illo debitis, iusto molestiae reprehenderit pariatur nisi consectetur quaerat adipisci sequi, aliquam et atque quis nam assumenda iure maxime! Alias autem ut vel eveniet ducimus beatae voluptatum tempora rerum provident. Enim, illum non voluptates assumenda asperiores sed voluptate suscipit. Nobis quisquam, obcaecati eius, animi est minus consequatur sunt veniam quasi consequuntur alias nihil natus maiores quos, hic ratione vel dolore explicabo vero. Voluptatibus sequi vero expedita error ipsam architecto nam nostrum fuga delectus debitis quis, quidem eveniet totam laborum ut. Enim dignissimos ipsam sunt natus voluptatum dolorem voluptate laudantium rem iste deleniti? Commodi molestiae, 
+  </p>
+  <script>
+    //document.querySelectorAll()이라면, 복수를 취득하게 되므로, 한 번 변수에 격납해, forEach등에서 루프시켜서 하나씩 처리할 필요가 있습니다
+    //document.querySelectorAll()であるなら、複数を取得することになるので、一度変数に格納して、forEachなどでループさせて1つずつ処理する必要があります
+    /*
+    const ptag = document.querySelector('p');
+    let output = '';
+    const content = ptag.innerHTML.replace(/<br>\s*\/?>/gi,'\n');
+    for(let str of content.split('')){//글자를 한글자씩 나눔
+      output += '<span>'+str+'</span>';//1글자씩 스팬태그를 적용
+    };
+    ptag.innerHTML = output;
+    
+    const tl = gsap.timeline();
+    tl.to('span',{
+      duration:0.05,
+      opacity:1,
+      stagger:{
+        from:'start',
+        each:0.03,
+      }
+    });
+    */
+  </script>
+</body>
+</html>
