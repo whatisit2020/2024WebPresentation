@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business card</title>
+  <link href="js/swiper.min.css" rel="styleSheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    span{
+      opacity:0;
+    }
+    li{
+      list-style: none;
+    }
+    main{
+      width: 1160px;
+      margin: 0 auto;
+    }
+    h1{
+      margin-top: 20px;
+    }
+    h2{
+      margin-top: 20px;
+    }
+    hr{
+      margin-bottom: 20px;
+    }
+    .swiper-container{
+      width: 1160px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: rgb(195, 195, 195);
+    }
+    .swiper-slide{
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .swiper-button-prev, .swiper-button-next{
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Business card</h1>
+    <hr>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="better life/betterLifeLogo1.png" width="630" height="446" alt="betterLifeLogo1">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeLogo2.png" width="630" height="446" alt="betterLifeLogo2">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeHanger1.png" width="630" height="446" alt="betterLifeHanger1">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeHanger2.png" width="630" height="446" alt="betterLifeHanger2">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeBanner.png" width="630" height="446" alt="betterLifeBanner">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeBusinessCard.png" width="630" height="446" alt="betterLifeBusinessCard">
+        </div>
+        <div class="swiper-slide">
+          <img src="better life/betterLifeMockUp.png" width="630" height="446" alt="betterLifeMockUp">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <h2>説明</h2>
+    <hr>
+    <p>
+      Better Lifeというセルフコインランドリーの公募展で製作したBIデザインです。 優勝することはできなかったが、私が製作した初のBIデザインで、私には意味のある作業です。 回転する洗濯機の中で渦巻く水と洗濯物をBetter Lifeのbで表現しました。
+
+      2、3、4番目のスライドのものはハンガーの首の部分に取り付け、広報として使われるもので、この企業がスタートアップ企業だったのを考え広報が大事だと思いデザインしたものです。
+      
+      5番目のスライドはコイン洗濯機の利用方法に関する内容を記入する意図でデザインしたものです。
+      
+      名刺は全部で2種類デザインしましたが、正方形の名刺はドラム式洗濯機を表しています。
+      
+      7番目のスライドはコインランドリーのガラスに適用された場合を見ることができるモックアップです。
+    </p>
+  </main>
+  <script src="js/swiper.min.js"></script>
+  <script src="gsap.min.js"></script>
+  <script>
+    window.addEventListener('load',()=>{
+      const swiper = new Swiper('.swiper-container',{
+        sliderPerView: 1,
+        spaceBetween: 30,
+        loop:true,
+        pagination:{
+          el:'.swiper-pagination',
+          clickable:true,
+        },
+        navigation:{
+          nextEl:'.swiper-button-next',
+          prevEl:'.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <script>
+    //text animation
+    const ptag = document.querySelectorAll('p');
+    ptag.forEach((value)=>{
+      let output = '';
+      const content = value.innerHTML.replace(/<br>\s*\/?>/gi,'\n');
+      for(let str of content.split('')){//글자를 한글자씩 나눔
+        output += '<span>'+str+'</span>';//1글자씩 스팬태그를 적용
+      };
+      value.innerHTML = output;
+      const tl = gsap.timeline();
+      tl.to('span',{
+        duration:0.05,
+        opacity:1,
+        stagger:{
+          from:'start',
+          each:0.03,
+        }
+      });
+    });
+  </script>
+</body>
+</html>

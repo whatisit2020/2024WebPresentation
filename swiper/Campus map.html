@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Map</title>
+  <link href="js/swiper.min.css" rel="styleSheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    span{
+      opacity:0;
+    }
+    li{
+      list-style: none;
+    }
+    main{
+      width: 1160px;
+      margin: 0 auto;
+    }
+    h1{
+      margin-top: 20px;
+    }
+    h2{
+      margin-top: 20px;
+    }
+    hr{
+      margin-bottom: 20px;
+    }
+    .swiper-container{
+      width: 1160px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: rgb(195, 195, 195);
+    }
+    .swiper-slide{
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .swiper-button-prev, .swiper-button-next{
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Campus map</h1>
+    <hr>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="campusMap/zokeiCampusMapFront.png" width="444" height="444" alt="zokeiCampusMapFront">
+        </div>
+        <div class="swiper-slide">
+            <img src="campusMap/zokeiCampusMapBack.png" width="444" height="444" alt="zokeiCampusMapBack">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <h2>説明</h2>
+    <hr>
+    <p>
+      1年生の前期授業の課題として制作した東京造形大学のキャンパスマップです。 1年生の時にはコロナウイルスで韓国でオンラインで授業を受けていたので、グーグルマップを利用して学校の各施設をキャプチャーしたあと、イラストレーターで線を取った記憶があります。 一つ一つ線を取らなければならなかったので予想したより時間がかかりましたが、普段パソコンで作業するのを楽しんで疲れずに作業を終えることができました。
+    </p>
+  </main>
+  <script src="js/swiper.min.js"></script>
+  <script src="gsap.min.js"></script>
+  <script>
+    window.addEventListener('load',()=>{
+      const swiper = new Swiper('.swiper-container',{
+        sliderPerView: 1,
+        spaceBetween: 30,
+        loop:true,
+        pagination:{
+          el:'.swiper-pagination',
+          clickable:true,
+        },
+        navigation:{
+          nextEl:'.swiper-button-next',
+          prevEl:'.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <script>
+    //text animation
+    const ptag = document.querySelectorAll('p');
+    ptag.forEach((value)=>{
+      let output = '';
+      const content = value.innerHTML.replace(/<br>\s*\/?>/gi,'\n');
+      for(let str of content.split('')){//글자를 한글자씩 나눔
+        output += '<span>'+str+'</span>';//1글자씩 스팬태그를 적용
+      };
+      value.innerHTML = output;
+      const tl = gsap.timeline();
+      tl.to('span',{
+        duration:0.05,
+        opacity:1,
+        stagger:{
+          from:'start',
+          each:0.03,
+        }
+      });
+    });
+  </script>
+</body>
+</html>

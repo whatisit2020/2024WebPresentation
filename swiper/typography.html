@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TYPOGRAPHY</title>
+  <link href="js/swiper.min.css" rel="styleSheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    li{
+      list-style: none;
+    }
+    main{
+      width: 1160px;
+      margin: 0 auto;
+    }
+    h1{
+      margin-top: 20px;
+    }
+    h2{
+      margin-top: 20px;
+    }
+    hr{
+      margin-bottom: 20px;
+    }
+    .swiper-container{
+      width: 1160px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: rgb(195, 195, 195);
+    }
+    .swiper-slide{
+      display: flex;
+      justify-content: center;
+    }
+    .swiper-button-prev, .swiper-button-next{
+      color: white;
+    }
+    span{
+      opacity:0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Typography</h1>
+    <hr>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="padding-top: 90px;">
+            <img src="typography/hedgeHog.png" width="376" height="298" alt="hedgeHog">
+        </div>
+        <div class="swiper-slide" style="padding-top: 30px;padding-left: 20px;">
+            <img src="typography/hedgeHogCup.png" width="536" height="417" alt="hedgeHogCup">
+        </div>
+        <div class="swiper-slide" style="padding-top: 90px;">
+            <img src="typography/hedgeHogWhite.png" width="376" height="298" alt="hedgeHogWhite">
+        </div>
+        <div class="swiper-slide" style="padding-top: 30px;">
+            <img src="typography/hedgeHogBag.png" width="414" height="414"alt="hedgeHogBag">
+        </div>
+        <div class="swiper-slide" style="padding-top: 90px;">
+            <img src="typography/blackSwan.png" width="658" height="298"alt="blackSwan">
+        </div>
+        <div class="swiper-slide" style="padding-top: 30px;">
+          <img src="typography/blackSwanMockUp.png" width="621" height="414" alt="blackSwanMockUp">
+        </div>
+        <div class="swiper-slide" style="padding-top: 90px;">
+            <img src="typography/swan.png" width="402" height="298"alt="swan">
+        </div>
+        <div class="swiper-slide" style="padding-top: 30px;">
+            <img src="typography/swanMockUp.png" width="620" height="414"alt="swanMockUp">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <h2>説明</h2>
+    <hr>
+    <p>
+      メディアデザイン1年後期授業の課題として作った動物のタイポグラフィです。
+    </p>
+    <p>
+      上のこと以外にもいくつかありますが、個人的によくできたと思うことだけ持ってきました。
+    </p>
+    <br>
+    <p>
+      TYPOGRAPHY課題をしながら一番気にしたことは動物の特徴を活かすことで、文字の部分を読む前に何の動物なのかすぐ分かるように、少しだけ誇張して表現しました。
+    </p>
+    <br>
+    <p>
+      ハリネズミの場合は特徴である針を誇張し, 文字の場合は連結性を付与して一つの塊で見えるようにしました。
+    </p>
+    <br>
+    <p>
+      白鳥と黒鳥はSの首と大きな翼、そして丸いくちばしに集中してデザインしました。
+      白鳥の場合、Sが逆になっているのを見ることができますが、一匹は正面を見るようにしたかったし、可読性にも問題がなかったのでそのようにデザインしました。
+    </p>
+  </main>
+  <script src="js/swiper.min.js"></script>
+  <script src="gsap.min.js"></script>
+  <script>
+    //slideshow
+    window.addEventListener('load',()=>{
+      const swiper = new Swiper('.swiper-container',{
+        sliderPerView: 1,
+        spaceBetween: 30,
+        loop:true,
+        pagination:{
+          el:'.swiper-pagination',
+          clickable:true,
+        },
+        navigation:{
+          nextEl:'.swiper-button-next',
+          prevEl:'.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <script>
+    //text animation
+    const ptag = document.querySelectorAll('p');
+    ptag.forEach((value)=>{
+      let output = '';
+      const content = value.innerHTML.replace(/<br>\s*\/?>/gi,'\n');
+      for(let str of content.split('')){//글자를 한글자씩 나눔
+        output += '<span>'+str+'</span>';//1글자씩 스팬태그를 적용
+      };
+      value.innerHTML = output;
+      const tl = gsap.timeline();
+      tl.to('span',{
+        duration:0.05,
+        opacity:1,
+        stagger:{
+          from:'start',
+          each:0.03,
+        }
+      });
+    });
+  </script>
+</body>
+</html>

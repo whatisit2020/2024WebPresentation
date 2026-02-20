@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mirae N</title>
+  <link href="js/swiper.min.css" rel="styleSheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    span{
+      opacity:0;
+    }
+    li{
+      list-style: none;
+    }
+    main{
+      width: 1160px;
+      margin: 0 auto;
+    }
+    h1{
+      margin-top: 20px;
+    }
+    h2{
+      margin-top: 20px;
+    }
+    hr{
+      margin-bottom: 20px;
+    }
+    .swiper-container{
+      width: 1160px;
+      height: 500px;
+      margin: 0 auto;
+      background-color: rgb(195, 195, 195);
+    }
+    .swiper-slide{
+      padding-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .swiper-button-prev, .swiper-button-next{
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>MiraeN calender design</h1>
+    <hr>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="MiraeN/January.png" width="697" height="421" alt="January">
+        </div>
+        <div class="swiper-slide">
+            <img src="MiraeN/February.png" width="697" height="423" alt="February">
+        </div>
+        <div class="swiper-slide">
+            <img src="MiraeN/March.png" width="697" height="423" alt="March">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/April.png" width="697" height="423" alt="April">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/May.png" width="697" height="423" alt="May">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/June.png" width="697" height="423" alt="June">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/July.png" width="697" height="423" alt="July">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/August.png" width="697" height="423" alt="August">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/September.png" width="697" height="423" alt="September">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/October.png" width="697" height="423" alt="October">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/Novermber.png" width="697" height="423" alt="Novermber">
+        </div>
+        <div class="swiper-slide">
+          <img src="MiraeN/December.png" width="697" height="423" alt="December">
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <h2>説明</h2>
+    <hr>
+    <p>
+      韓国にいた時、Mirae-Nという企業の依頼を受けて製作したカレンダーデザインです。 キャラクターの開発まで参加したわけではありませんが、カレンダーに入るイラストなどを担当しました。 韓国の代表的な記念日の特徴をイラストで表しています。塾に通う学生たちに配るためのものなので、記念日を決めるときに学生たちが共感しやすいものにしました。 これ以前に絵本の挿絵を担当したことがあって、その時の経験がとても役に立った作業でした。
+    </p>
+  </main>
+  <script src="js/swiper.min.js"></script>
+  <script src="gsap.min.js"></script>
+  <script>
+    window.addEventListener('load',()=>{
+      const swiper = new Swiper('.swiper-container',{
+        sliderPerView: 1,
+        spaceBetween: 30,
+        loop:true,
+        pagination:{
+          el:'.swiper-pagination',
+          clickable:true,
+        },
+        navigation:{
+          nextEl:'.swiper-button-next',
+          prevEl:'.swiper-button-prev',
+        },
+      });
+    });
+  </script>
+  <script>
+    //text animation
+    const ptag = document.querySelectorAll('p');
+    ptag.forEach((value)=>{
+      let output = '';
+      const content = value.innerHTML.replace(/<br>\s*\/?>/gi,'\n');
+      for(let str of content.split('')){//글자를 한글자씩 나눔
+        output += '<span>'+str+'</span>';//1글자씩 스팬태그를 적용
+      };
+      value.innerHTML = output;
+      const tl = gsap.timeline();
+      tl.to('span',{
+        duration:0.05,
+        opacity:1,
+        stagger:{
+          from:'start',
+          each:0.03,
+        }
+      });
+    });
+  </script>
+</body>
+</html>
